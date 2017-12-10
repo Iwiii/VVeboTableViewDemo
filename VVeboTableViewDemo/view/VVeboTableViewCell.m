@@ -29,6 +29,7 @@
     CGRect repostsRect;
     UIActivityIndicatorView *_indicator;
 }
+
 -(void)touchString:(NSString *)string{
     NSLog(@"touch string:%@",string);
 }
@@ -77,6 +78,9 @@
             float y = i/3*h2;
             UIImageView *thumb1 = [[UIImageView alloc] initWithFrame:CGRectMake(x, y+2, SIZE_IMAGE, SIZE_IMAGE)];
             thumb1.tag = i+1;
+            thumb1.userInteractionEnabled = YES;
+            UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleTap:)];
+            [thumb1 addGestureRecognizer:singleTap];
             [mulitPhotoScrollView addSubview:thumb1];
         }
         
@@ -85,6 +89,12 @@
         
     }
     return self;
+}
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
+    UIImageView *imageView = (UIImageView*)gestureRecognizer.view;
+    NSLog(@"%@",imageView.image);
+    
+    //do something....
 }
 
 - (void)setFrame:(CGRect)frame{
