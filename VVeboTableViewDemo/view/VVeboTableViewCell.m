@@ -211,6 +211,7 @@
     });
     [self drawText];
     [self loadThumb];
+    
 }
 
 //将文本内容绘制到图片上

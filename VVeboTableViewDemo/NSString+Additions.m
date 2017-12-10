@@ -170,12 +170,22 @@
     //Draw the frame
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attributedString);
     CTFrameRef ctframe = CTFramesetterCreateFrame(framesetter, CFRangeMake(0,CFAttributedStringGetLength(attributedString)),path,NULL);
+
     CTFrameDraw(ctframe,context);
+    
+    //Realease
     CGPathRelease(path);
     CFRelease(font1);
     CFRelease(framesetter);
+    CFRelease(style);
     CFRelease(ctframe);
-    [[attributedStr mutableString] setString:@""];
+   
+    //async dealloc
+     dispatch_queue_t q1 = dispatch_queue_create("deallocqueue", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(q1, ^{
+        [[attributedStr mutableString] setString:@""];
+    });
+
     CGContextSetTextMatrix(context,CGAffineTransformIdentity);
     CGContextTranslateCTM(context,0, height);
     CGContextScaleCTM(context,1.0,-1.0);

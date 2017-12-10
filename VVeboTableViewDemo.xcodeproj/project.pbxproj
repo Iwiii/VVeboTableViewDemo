@@ -10,7 +10,6 @@
 		C497C6801B12AE50005BBE06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C497C67F1B12AE50005BBE06 /* main.m */; };
 		C497C6831B12AE50005BBE06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C497C6821B12AE50005BBE06 /* AppDelegate.m */; };
 		C497C6861B12AE50005BBE06 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C497C6851B12AE50005BBE06 /* ViewController.m */; };
-		C497C6891B12AE50005BBE06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C497C6871B12AE50005BBE06 /* Main.storyboard */; };
 		C497C68B1B12AE50005BBE06 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C497C68A1B12AE50005BBE06 /* Images.xcassets */; };
 		C497C68E1B12AE50005BBE06 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C497C68C1B12AE50005BBE06 /* LaunchScreen.xib */; };
 		C497C69A1B12AE50005BBE06 /* VVeboTableViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C497C6991B12AE50005BBE06 /* VVeboTableViewDemoTests.m */; };
@@ -60,7 +59,6 @@
 		C497C6821B12AE50005BBE06 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C497C6841B12AE50005BBE06 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C497C6851B12AE50005BBE06 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		C497C6881B12AE50005BBE06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C497C68A1B12AE50005BBE06 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C497C68D1B12AE50005BBE06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C497C6931B12AE50005BBE06 /* VVeboTableViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VVeboTableViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,7 +162,6 @@
 				C497C6851B12AE50005BBE06 /* ViewController.m */,
 				C497C6EC1B12CD89005BBE06 /* VVeboTableView.h */,
 				C497C6ED1B12CD89005BBE06 /* VVeboTableView.m */,
-				C497C6871B12AE50005BBE06 /* Main.storyboard */,
 				C497C68A1B12AE50005BBE06 /* Images.xcassets */,
 				C497C68C1B12AE50005BBE06 /* LaunchScreen.xib */,
 				C497C67D1B12AE50005BBE06 /* Supporting Files */,
@@ -349,7 +346,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C497C6F21B12D3B6005BBE06 /* t_repost@2x.png in Resources */,
-				C497C6891B12AE50005BBE06 /* Main.storyboard in Resources */,
 				C497C6F11B12D3B6005BBE06 /* t_comments@2x.png in Resources */,
 				C497C68E1B12AE50005BBE06 /* LaunchScreen.xib in Resources */,
 				C497C68B1B12AE50005BBE06 /* Images.xcassets in Resources */,
@@ -419,14 +415,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C497C6871B12AE50005BBE06 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C497C6881B12AE50005BBE06 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C497C68C1B12AE50005BBE06 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

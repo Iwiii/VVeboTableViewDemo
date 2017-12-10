@@ -217,6 +217,7 @@ static inline NSRegularExpression * TopicRegularExpression() {
                                     textColor.CGColor,kCTForegroundColorAttributeName,
                                     style,kCTParagraphStyleAttributeName,
                                     nil];
+    
         
         //Create attributed string, with applied syntax highlighting
         NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:text attributes:attributes];
@@ -224,7 +225,6 @@ static inline NSRegularExpression * TopicRegularExpression() {
         
         //Draw the frame
         CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attributedString);
-        
         CGRect rect = CGRectMake(0, 5,(size.width),(size.height-5));
         
         if ([temp isEqualToString:text]) {
@@ -234,10 +234,12 @@ static inline NSRegularExpression * TopicRegularExpression() {
             CGContextScaleCTM(context,1.0,-1.0);
             UIImage *screenShotimage = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
+          
             dispatch_async(dispatch_get_main_queue(), ^{
                 CFRelease(font);
                 CFRelease(framesetter);
-                [[attributedStr mutableString] setString:@""];
+                CFRelease(style);
+               [[attributedStr mutableString] setString:@""];
                 
                 if (drawFlag==flag) {
                     if (isHighlight) {
@@ -269,6 +271,7 @@ static inline NSRegularExpression * TopicRegularExpression() {
             });
         }
     });
+    
 }
 
 //确保行高一致，计算所需触摸区域
@@ -346,7 +349,6 @@ static inline NSRegularExpression * TopicRegularExpression() {
                 CGContextSetTextPosition(c, penOffset, y);
                 
                 CTLineDraw(truncatedLine, c);
-                
                 CFRelease(truncatedLine);
                 CFRelease(truncationLine);
                 CFRelease(truncationToken);
