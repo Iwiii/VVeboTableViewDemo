@@ -142,6 +142,13 @@ static inline NSRegularExpression * TopicRegularExpression() {
             if (labelImageView.image != nil && currentRange.location!=-1 && currentRange.location>=match.range.location && currentRange.length+currentRange.location<=match.range.length+match.range.location) {
                 [coloredString addAttribute:(NSString*)kCTForegroundColorAttributeName
                                       value:(id)[UIColor colorWithRed:224/255.0 green:44/255.0 blue:86/255.0 alpha:1].CGColor range:match.range];
+                
+                if ( [self.delegate respondsToSelector:@selector(touchString:)]) {
+                      NSString *str = [string substringWithRange:match.range];
+                      [self.delegate touchString:str];
+                }
+                
+
                 double delayInSeconds = 1.5;
                 dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
                 dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -150,6 +157,7 @@ static inline NSRegularExpression * TopicRegularExpression() {
             } else {
                 UIColor *highlightColor = highlightColors[key];
                 [coloredString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)highlightColor.CGColor range:match.range];
+                
             }
         }
     }
@@ -239,8 +247,10 @@ static inline NSRegularExpression * TopicRegularExpression() {
                 CFRelease(font);
                 CFRelease(framesetter);
                 CFRelease(style);
-               [[attributedStr mutableString] setString:@""];
-                
+                dispatch_queue_t q1 = dispatch_queue_create("delloc", DISPATCH_QUEUE_CONCURRENT);
+                dispatch_async(q1, ^{
+                     [[attributedStr mutableString] setString:@""];
+                });
                 if (drawFlag==flag) {
                     if (isHighlight) {
                         if (highlighting) {
@@ -462,6 +472,7 @@ static inline NSRegularExpression * TopicRegularExpression() {
             range = NSMakeRange(range.location, range.length-1);
             currentRange = range;
             [self highlightWord];
+            break;
         }
     }
 }

@@ -13,7 +13,8 @@
 #import "VVeboLabel.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
-
+@interface VVeboTableViewCell()<YALTouchObject>
+@end
 @implementation VVeboTableViewCell {
     UIImageView *postBGView;
     UIButton *avatarView;
@@ -28,7 +29,9 @@
     CGRect repostsRect;
     UIActivityIndicatorView *_indicator;
 }
-
+-(void)touchString:(NSString *)string{
+    NSLog(@"touch string:%@",string);
+}
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -110,10 +113,12 @@
     }
     label = [[VVeboLabel alloc] initWithFrame:[_data[@"textRect"] CGRectValue]];
     label.textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];
+    label.delegate = self;
     label.backgroundColor = self.backgroundColor;
     [self.contentView addSubview:label];
     
     detailLabel = [[VVeboLabel alloc] initWithFrame:[_data[@"subTextRect"] CGRectValue]];
+    detailLabel.delegate = self;
     detailLabel.font = FontWithSize(SIZE_FONT_SUBCONTENT);
     detailLabel.textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];;
     detailLabel.backgroundColor = [UIColor colorWithRed:243/255.0 green:243/255.0 blue:243/255.0 alpha:1];
