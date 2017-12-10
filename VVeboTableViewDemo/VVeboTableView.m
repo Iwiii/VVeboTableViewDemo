@@ -116,6 +116,12 @@
     [self loadContent];
 }
 
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    scrollToToping = NO;
+    [self loadContent];
+    
+}
+
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
     scrollToToping = NO;
     [self loadContent];
