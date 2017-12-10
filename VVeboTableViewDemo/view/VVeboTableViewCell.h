@@ -27,5 +27,5 @@
 - (void)draw;
 - (void)clear;
 - (void)releaseMemory;
-
+- (void)poorDraw;
 @end

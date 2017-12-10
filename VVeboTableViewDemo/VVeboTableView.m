@@ -50,7 +50,7 @@
     [cell clear];
     cell.data = data;
     if (needLoadArr.count>0&&[needLoadArr indexOfObject:indexPath]==NSNotFound) {
-        [cell clear];
+        [cell poorDraw];
         return;
     }
     if (scrollToToping) {

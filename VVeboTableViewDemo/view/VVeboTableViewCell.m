@@ -26,6 +26,7 @@
     NSInteger drawColorFlag;
     CGRect commentsRect;
     CGRect repostsRect;
+    UIActivityIndicatorView *_indicator;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -75,6 +76,10 @@
             thumb1.tag = i+1;
             [mulitPhotoScrollView addSubview:thumb1];
         }
+        
+        _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self.contentView addSubview:_indicator];
+        
     }
     return self;
 }
@@ -83,6 +88,7 @@
     [super setFrame:frame];
     [self.contentView bringSubviewToFront:topLine];
     topLine.y = self.height-.5;
+    _indicator.center = CGPointMake(frame.size.width/2,frame.size.height/2);
 }
 
 - (void)setData:(NSDictionary *)data{
@@ -267,8 +273,11 @@
         }
     }
 }
-
+-(void)poorDraw{
+    [_indicator startAnimating];
+}
 - (void)clear{
+    [_indicator stopAnimating];
     if (!drawed) {
         return;
     }
